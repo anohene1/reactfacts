@@ -1,15 +1,20 @@
 import './App.css';
 import Navbar from "./components/Navbar";
-import MainContent from "./components/MainContent";
-
-
-
+import Main from "./components/MainContent";
+import {useState} from 'react';
 
 function App() {
-  return (
+
+    const [darkMode, setDarkMode] = useState(false);
+
+    function toggleDarkMode() {
+        setDarkMode(prevState => !prevState);
+    }
+
+    return (
     <div className="container">
-        <Navbar />
-        <MainContent />
+        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <Main darkMode={darkMode} />
     </div>
   );
 }
